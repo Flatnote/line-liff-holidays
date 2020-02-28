@@ -8,6 +8,7 @@ import MuiDialogActions from "@material-ui/core/DialogActions";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
+import moment from "moment";
 
 const styles = theme => ({
   root: {
@@ -73,6 +74,7 @@ export default function CustomizedDialogs(props) {
           )}
           {data.map(item => (
             <Typography key={item._id} gutterBottom>
+              {moment(item.publicHolidayDate).format("DD/MM/YYYY")} -{" "}
               {item.publicHolidayName}
             </Typography>
           ))}

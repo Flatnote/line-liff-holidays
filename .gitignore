@@ -3,3 +3,4 @@ firebase.json
 package-lock.json
 build
 .firebase
+.env

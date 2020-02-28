@@ -30,7 +30,7 @@ function CircularIndeterminate() {
 }
 
 const liff = window.liff;
-const liffId = "1653833629-eDvXvG9q";
+const liffId = process.env.MY_LIFF_ID;
 
 const months = moment.months();
 
@@ -140,7 +140,7 @@ class App extends Component {
   // }
 
   render() {
-    const { data, show, currentMonth, loadData, name } = this.state;
+    const { data, show, currentMonth, loadData, name, userLineID } = this.state;
     return (
       <div className="App">
         <div style={{ margin: 16 }} className="vertical-center">
@@ -149,6 +149,7 @@ class App extends Component {
               <img width="25%" src={this.state.pictureUrl} />
             ) : null}
           </div>
+          {`userLineID : ${userLineID}`}
           {`line name : ${name}`}
           <AutoGrid
             callBack={this.getData}
