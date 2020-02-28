@@ -30,8 +30,7 @@ function CircularIndeterminate() {
 }
 
 const liff = window.liff;
-// const liffId = "1653833629-eDvXvG9q";
-// console.log(liffId);
+const liffId = "1653833629-eDvXvG9q";
 
 const months = moment.months();
 
@@ -61,16 +60,19 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // liff
-    //   .init({ liffId })
-    //   .then(async () => {
-    //     if (!liff.isLoggedIn()) {
-    //       liff.login();
-    //     }
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
+    liff
+      .init({ liffId })
+      .then(async () => {
+        if (!liff.isLoggedIn()) {
+          liff.login();
+          this.getProfile();
+        } else {
+          this.getProfile();
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   getData = month => {
@@ -138,10 +140,16 @@ class App extends Component {
   // }
 
   render() {
-    const { data, show, currentMonth, loadData } = this.state;
+    const { data, show, currentMonth, loadData, name } = this.state;
     return (
       <div className="App">
         <div style={{ margin: 16 }} className="vertical-center">
+          <div className="support">
+            {this.state.pictureUrl && this.state.pictureUrl != "" ? (
+              <img width="25%" src={this.state.pictureUrl} />
+            ) : null}
+          </div>
+          {`line name : ${name}`}
           <AutoGrid
             callBack={this.getData}
             loading={loadData}
